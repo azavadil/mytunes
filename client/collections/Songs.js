@@ -3,5 +3,13 @@ var Songs = Backbone.Collection.extend({
 
   model: SongModel,
 
+  enqueue: function(value){
+    this.push(value);
+  },
+
+  dequeue: function(){
+    return this.unshift();
+  }
+
 
 });
