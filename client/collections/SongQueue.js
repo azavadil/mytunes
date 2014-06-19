@@ -4,10 +4,14 @@ var SongQueue = Songs.extend({
   initialize: function(params){
     // this.appRef = params.context;
     this.on('ended', function(song){
-      console.log('song',song);
-      console.log('sq.length',this.length);
       this.remove(this.first());
-      console.log('sq.length',this.length);
+      if( this.length > 0 ){
+        this.playFirst();
+      }
+    }, this);
+
+    this.on('dequeue', function(song){
+      this.remove(this.first());
       if( this.length > 0 ){
         this.playFirst();
       }
